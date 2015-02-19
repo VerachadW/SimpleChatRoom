@@ -24,6 +24,7 @@ import android.support.v7.widget.LinearLayoutManager
  */
 class ChatRoomFragment : Fragment() {
 
+    private val SERVER_URL = ""
     class object {
 
         private val ARG_USERNAME = "arg_username"
@@ -39,7 +40,7 @@ class ChatRoomFragment : Fragment() {
     }
 
     private val mClient: ChatClient by Delegates.lazy {
-        ChatClient(URI("ws://172.18.5.68:8888"))
+        ChatClient(URI(SERVER_URL))
     }
 
     private val btSend by Delegates.lazy {

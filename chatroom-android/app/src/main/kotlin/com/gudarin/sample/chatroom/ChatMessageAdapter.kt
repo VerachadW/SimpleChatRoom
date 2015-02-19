@@ -30,7 +30,7 @@ class ChatMessageAdapter : RecyclerView.Adapter<MessageViewHolder>() {
     }
 
     fun add(message: String) {
-        messages.add(message)
+        messages.add(0, message)
         notifyDataSetChanged()
     }
 }

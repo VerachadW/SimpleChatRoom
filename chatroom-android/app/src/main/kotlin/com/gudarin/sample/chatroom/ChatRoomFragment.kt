@@ -15,8 +15,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.text.TextUtils
 import android.support.v7.widget.RecyclerView
-import org.json.JSONObject
-import com.google.gson.Gson
 import android.support.v7.widget.LinearLayoutManager
 
 /**
@@ -24,7 +22,7 @@ import android.support.v7.widget.LinearLayoutManager
  */
 class ChatRoomFragment : Fragment() {
 
-    private val SERVER_URL = ""
+    private val SERVER_URL = "ws://x.x.x.x:8888"
     class object {
 
         private val ARG_USERNAME = "arg_username"

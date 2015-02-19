@@ -12,6 +12,7 @@ class ChatSocketHandler(websocket.WebSocketHandler):
 			channels.append(self)
 
 	def on_message(self, message):
+		print(message)
 		for c in channels:
 			c.write_message(message)
 
@@ -26,5 +27,6 @@ app = web.Application([
 
 
 if __name__ == '__main__':
+	print("Start Chat Server")
 	app.listen(8888)
 	ioloop.IOLoop.instance().start()

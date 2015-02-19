@@ -8,5 +8,5 @@ For sever, it is written in Python with [Tornado](http://www.tornadoweb.org/en/s
 
 ## Client Setup
 1. Open ```ChatRoomFragment``` file in ```chatroom-android``` directory
-2. Change ```SERVER_URL``` to your server address e.g. ws://x.x.x.x:yyyy
+2. Change ```SERVER_URL``` to your server address e.g. ```ws://x.x.x.x:8888```
 3. Run the app and see the result.

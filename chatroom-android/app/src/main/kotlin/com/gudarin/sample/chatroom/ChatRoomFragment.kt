@@ -22,7 +22,7 @@ import android.support.v7.widget.LinearLayoutManager
  */
 class ChatRoomFragment : Fragment() {
 
-    private val SERVER_URL = "ws://x.x.x.x:8888"
+    private val SERVER_URL = "ws://x.x.x.x:8080/chat/websocket"
     class object {
 
         private val ARG_USERNAME = "arg_username"
@@ -81,11 +81,15 @@ class ChatRoomFragment : Fragment() {
                 mClient.send("${mUsername}: ${msg}")
             }
         }
+        btSend.setEnabled(false)
     }
 
     inner class ChatClient(url: URI): WebSocketClient(url) {
         override fun onOpen(handshakedata: ServerHandshake?) {
             Log.d("ChatClient", "ChatClient Connected")
+            this@ChatRoomFragment.getActivity().runOnUiThread {
+                btSend.setEnabled(true)
+            }
         }
 
         override fun onMessage(message: String) {

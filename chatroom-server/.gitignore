@@ -1,1 +1,13 @@
-env
+*.swp
+*.swo
+*.pyc
+*.*~
+pyenv
+#*#
+build
+dist
+source/_static*
+source/_templates*
+make.bat
+venv
+*.egg-info

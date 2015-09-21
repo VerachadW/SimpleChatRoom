@@ -1,9 +1,6 @@
-package com.gudarin.sample.chatroom
+package me.lazmaid.sample.chatroom
 
 import android.os.Bundle
-import kotlin.properties.Delegates
-import android.widget.EditText
-import android.support.v7.app.ActionBarActivity
 import android.support.v7.app.AppCompatActivity
 
 /**

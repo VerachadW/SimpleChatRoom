@@ -1,21 +1,20 @@
-package com.gudarin.sample.chatroom
+package me.lazmaid.sample.chatroom
 
-import android.support.v4.app.Fragment
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import android.view.View
-import org.java_websocket.WebSocket
-import kotlin.properties.Delegates
-import java.net.URI
-import org.java_websocket.client.WebSocketClient
-import org.java_websocket.handshake.ServerHandshake
+import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.text.TextUtils
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.text.TextUtils
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.LinearLayoutManager
+import org.java_websocket.client.WebSocketClient
+import org.java_websocket.handshake.ServerHandshake
+import java.net.URI
+import kotlin.properties.Delegates
 
 /**
  * Created by VerachadW on 2/19/15.

@@ -1,12 +1,11 @@
-package com.gudarin.sample.chatroom
+package me.lazmaid.sample.chatroom
 
 import android.support.v7.widget.RecyclerView
-import kotlin.properties.Delegates
-import android.view.View
-import android.widget.TextView
-import android.view.ViewGroup
-import java.util.ArrayList
 import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import java.util.ArrayList
 
 /**
  * Created by VerachadW on 2/19/15.
@@ -18,7 +17,6 @@ class ChatMessageAdapter : RecyclerView.Adapter<MessageViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.listitem_message, parent, false)
         return MessageViewHolder(view)
-
     }
 
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
@@ -36,5 +34,5 @@ class ChatMessageAdapter : RecyclerView.Adapter<MessageViewHolder>() {
 }
 
 class MessageViewHolder(val rootView: View) : RecyclerView.ViewHolder(rootView) {
-   val tvChatMessage by Delegates.lazy { rootView.findViewById(R.id.tvChatMessage) as TextView}
+   val tvChatMessage by lazy { rootView.findViewById(R.id.tvChatMessage) as TextView }
 }

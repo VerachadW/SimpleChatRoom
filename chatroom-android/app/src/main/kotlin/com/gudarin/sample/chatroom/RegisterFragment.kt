@@ -15,12 +15,12 @@ import android.text.TextUtils
  */
 class RegisterFragment : Fragment() {
 
-    val etUsername by Delegates.lazy { vRoot.findViewById(R.id.etUsername) as EditText  }
-    val btJoin by Delegates.lazy { vRoot.findViewById(R.id.btJoin) as Button }
+    val etUsername by lazy { vRoot.findViewById(R.id.etUsername) as EditText  }
+    val btJoin by lazy { vRoot.findViewById(R.id.btJoin) as Button }
 
-    var vRoot: View by Delegates.notNull()
+    lateinit var vRoot: View
 
-    class object {
+    companion object {
         fun newInstance(): RegisterFragment {
             return RegisterFragment()
         }
@@ -36,10 +36,10 @@ class RegisterFragment : Fragment() {
 
         btJoin.setOnClickListener {
 
-            val username = etUsername.getText().toString()
+            val username = etUsername.text.toString()
 
             if (!TextUtils.isEmpty(username)) {
-                (getActivity() as SimpleChatActivity).openChatRoom(username)
+                (activity as SimpleChatActivity).openChatRoom(username)
             }
         }
     }

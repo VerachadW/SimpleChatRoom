@@ -16,13 +16,13 @@ class ChatMessageAdapter : RecyclerView.Adapter<MessageViewHolder>() {
     private val messages: ArrayList<String> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
-        val view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_message, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.listitem_message, parent, false)
         return MessageViewHolder(view)
 
     }
 
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
-        holder.tvChatMessage.setText(messages.get(position))
+        holder.tvChatMessage.text = messages.get(position)
     }
 
     override fun getItemCount(): Int {

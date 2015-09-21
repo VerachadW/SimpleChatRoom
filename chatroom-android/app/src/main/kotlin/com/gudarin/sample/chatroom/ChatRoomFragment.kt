@@ -23,7 +23,7 @@ import android.support.v7.widget.LinearLayoutManager
 class ChatRoomFragment : Fragment() {
 
     private val SERVER_URL = "ws://x.x.x.x:8888"
-    class object {
+    companion object {
 
         private val ARG_USERNAME = "arg_username"
 
@@ -31,7 +31,7 @@ class ChatRoomFragment : Fragment() {
             val fragment = ChatRoomFragment()
             val args = Bundle();
             args.putString(ARG_USERNAME, username)
-            fragment.setArguments(args)
+            fragment.arguments = args
 
             return fragment
         }
@@ -41,21 +41,21 @@ class ChatRoomFragment : Fragment() {
         ChatClient(URI(SERVER_URL))
     }
 
-    private val btSend by Delegates.lazy {
-        getActivity().findViewById(R.id.btSend) as Button
+    private val btSend by lazy {
+        activity.findViewById(R.id.btSend) as Button
     }
 
-    private val etMessage by Delegates.lazy {
-        getActivity().findViewById(R.id.etMessage) as EditText
+    private val etMessage by lazy {
+        activity.findViewById(R.id.etMessage) as EditText
     }
 
-    private val rvChatMessages by Delegates.lazy {
-        getActivity().findViewById(R.id.rvChatMessages) as RecyclerView
+    private val rvChatMessages by lazy {
+        activity.findViewById(R.id.rvChatMessages) as RecyclerView
     }
 
     private val mAdapter: ChatMessageAdapter = ChatMessageAdapter()
 
-    private var mUsername: String by Delegates.notNull()
+    lateinit private var mUsername: String
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater!!.inflate(R.layout.fg_chatroom, container, false)
@@ -64,21 +64,21 @@ class ChatRoomFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (getArguments() != null) {
-            mUsername = getArguments().getString(ARG_USERNAME)
+        if (arguments != null) {
+            mUsername = arguments.getString(ARG_USERNAME)
         } else {
             IllegalAccessError("No username found")
         }
 
         mClient.connect()
 
-        rvChatMessages.setLayoutManager(LinearLayoutManager(getActivity()))
-        rvChatMessages.setAdapter(mAdapter)
+        rvChatMessages.layoutManager = LinearLayoutManager(activity)
+        rvChatMessages.adapter = mAdapter
 
         btSend.setOnClickListener {
-            val msg = etMessage.getText().toString()
+            val msg = etMessage.text.toString()
             if (!TextUtils.isEmpty(msg)) {
-                mClient.send("${mUsername}: ${msg}")
+                mClient.send("$mUsername: $msg")
             }
         }
     }
@@ -89,7 +89,7 @@ class ChatRoomFragment : Fragment() {
         }
 
         override fun onMessage(message: String) {
-            this@ChatRoomFragment.getActivity().runOnUiThread({
+            this@ChatRoomFragment.activity.runOnUiThread({
                 mAdapter.add(message)
             })
         }
